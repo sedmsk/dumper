@@ -1,0 +1,15 @@
+{
+    "name": "sd/dumper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Igor Finagin",
+            "email": "Igor.Finagin@tatar.ru",
+            "homepage": "https://phab.shire.local/p/Igor.Finagin/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    }
+}
