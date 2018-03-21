@@ -1,5 +1,7 @@
 {
     "name": "sd/dumper",
+    "version": "0.1.0-p7",
+    "homepage": "http://git.shire.local/SD/MOCKBA/dumper",
     "license": "MIT",
     "authors": [
         {
@@ -10,6 +12,35 @@
         }
     ],
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "symfony/dotenv": "~3.3",
+        "symfony/var-dumper": "~3.3",
+        "twig/twig": "~1.28"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SD\\Dumper\\": "src"
+        },
+        "files": [
+            "src/init.php",
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SD\\Dumper\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": [
+            "@composer install",
+            "phpunit --colors --testdox"
+        ]
     }
 }

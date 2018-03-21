@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .js-log > div {
+            padding: 5px;
+            border: 1px solid #eee;
+            margin: 5px;
+        }
+
+        .controls {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <label>Tag: <input type="text" name="tag" value="{{ tag }}" placeholder="Empty - without tag"/></label>
+    <input type="submit" value="show"/> | <input type="button" class="js-clear" value="clear log"/>
+</form>
+<div class="js-log"></div>
+<div class="scripts">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script>
+        window.TIME = {{ time }};
+
+        jQuery(function ($) {
+            (function request() {
+                $
+                    .ajax('{{ ajax }}', {
+                        'dataType': 'json',
+                        'data': {
+                            'last': window.TIME,
+                            'cur': +(new Date)
+                        }
+                    })
+                    .done(function (data) {
+                        console.log(data);
+                        if (data.response) {
+                            window.TIME = data.response.time;
+
+                            $('<div>')
+                                .addClass('js-block')
+                                .html(data.response.content)
+                                .append(
+                                    $('<div>')
+                                        .addClass('js-code')
+                                        .css({'display': 'none'})
+                                        .text(data.response.content)
+                                )
+                                .prependTo(
+                                    $('.js-log')
+                                )
+                                .find('.js-open')
+                                .on('click', function () {
+                                    var newWindow = window.open(),
+                                        div = $(this).closest('.js-block').find('.js-code').clone();
+
+                                    newWindow.document.write(div.text());
+                                })
+                                .closest('.js-block')
+                                .find('.js-remove')
+                                .on('click', function () {
+                                    console.log(this, $(this));
+                                    $(this)
+                                        .closest('.js-block')
+                                        .remove();
+                                });
+                        }
+                    })
+                    .always(request);
+            })();
+
+            $('.js-clear')
+                .on('click', function (event) {
+                    event.preventDefault();
+
+                    $('.js-log').html('');
+                });
+        });
+    </script>
+</div>
+</body>
+</html>

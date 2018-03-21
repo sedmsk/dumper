@@ -1,0 +1,14 @@
+<div class="controls" style="display: none;min-height: 20px;">
+    <span class="js-remove" style="float: right;cursor:pointer;margin: 0 10px">&times;</span>
+    <span class="js-open" title="show separately" style="float: right;cursor:pointer">&divide;</span>
+</div>
+<div style="padding: 5px;border: 1px solid #eee;margin: 5px;">
+    <span title="ts: {{ time }}">
+        [{{ date }}]
+    </span>
+    {% if uri %}
+        <a href="{{ uri }}">{{ uri }}</a>
+    {% else %}
+        CLI
+    {% endif %}
+</div>

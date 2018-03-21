@@ -1,0 +1,28 @@
+{% if not withoutStyle %}
+    <style>
+        .collapsible-wrap {
+            padding: 5px;
+            border: 1px solid #eee;
+            margin: 5px;
+        }
+
+        .collapsible-wrap .collapsible {
+            display: none;
+        }
+
+        .collapsible-wrap input[type="checkbox"]:checked ~ .collapsible {
+            display: block;
+        }
+    </style>
+{% endif %}
+
+<div class="collapsible-wrap">
+    <input type="checkbox" id="{{ hash }}">
+    <label for="{{ hash }}">
+        {{ title }}
+        {% if from %}
+            <span style="opacity: 0">{{ from }}</span>
+        {% endif %}
+    </label>
+    <div class="collapsible">{{ content|raw }}</div>
+</div>

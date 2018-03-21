@@ -1,0 +1,6 @@
+#!/usr/bin/env php
+<?php
+
+file_put_contents('composer.json', preg_replace_callback('/(version"\s*:\s*"[^"]*\D)(\d+)"/', function ($matches) {
+    return $matches[1].(intval($matches[2]) + 1).'"';
+}, file_get_contents('composer.json')));
