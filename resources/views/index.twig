@@ -2,6 +2,10 @@
 <html>
 <head>
     <style>
+        body {
+            margin-top: 50px;
+        }
+
         .js-log > div {
             padding: 5px;
             border: 1px solid #eee;
@@ -11,10 +15,21 @@
         .controls {
             display: block !important;
         }
+
+        .fixed-header {
+            position: fixed;
+            background-color: rgba(171, 171, 171, 0.75);
+            width: 100%;
+            margin: 0;
+            top: 0;
+            left: 0;
+            padding: 10px 15px;
+            z-index: 1000000;
+        }
     </style>
 </head>
 <body>
-<form>
+<form class="fixed-header">
     <label>Tag: <input type="text" name="tag" value="{{ tag }}" placeholder="Empty - without tag"/></label>
     <input type="submit" value="show"/> | <input type="button" class="js-clear" value="clear log"/>
 </form>
