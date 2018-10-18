@@ -11,6 +11,8 @@ use Symfony\Component\VarDumper\Dumper\HtmlDumper as SymfonyHtmlDumper;
  */
 class HtmlDumper extends SymfonyHtmlDumper
 {
+    protected $dumpHeader = '';
+
     /**
      * Colour definitions for output.
      *
@@ -31,4 +33,11 @@ class HtmlDumper extends SymfonyHtmlDumper
         'key' => 'color:#df5000',
         'index' => 'color:#a71d5d',
     ];
+
+    public function renderDumpHandler(): string
+    {
+        $this->setDumpHeader(null);
+
+        return $this->getDumpHeader();
+    }
 }

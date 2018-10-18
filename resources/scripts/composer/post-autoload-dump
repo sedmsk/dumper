@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+GIT=${PWD}"/.git/hooks/";
+SCRIPTS=${PWD}"/resources/scripts/git/"
+
+HEADER="#!/usr/bin/env bash\n";
+
+check () {
+	HOOK=${GIT}$1
+	SCRIPT=${SCRIPTS}$1
+
+	if [ ! -f $HOOK ]; then
+		echo -e ${HEADER}"\n$SCRIPT\n" >> ${HOOK};
+	else
+		grep -q "^$SCRIPT" ${HOOK} || echo -e "\n$SCRIPT\n" >> ${HOOK};
+	fi
+
+	chmod +x ${HOOK};
+}
+
+check "pre-commit";

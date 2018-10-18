@@ -1,25 +1,41 @@
 # dumper
 
-## .env
-```
-# .env
-# Расположение проекта на машине разработчика
-LOCAL_ROOT=/Users/Shared/Projects/SEDv1-MSK
-
-# Расположение дампов на сервере
-STORAGE_DIR=/var/www/igor/tmp/
-```
-
 ## Использование
 ```php
-dumper(1);      // без тега
-dumper()
-    ::setTag('tag')
-    ::dump(2);  // с тегом tag
-dumper()
-    ::setTagOnce('once')
-    ::dump(3)   // с тегом once
-    ::dump(4)   // с тегом tag
-    ::unsetTag()
-    ::dump(5);  // без тега
+
+dumper(
+    ...$params,         // tag(string), expr(bool|callable)
+    ...$args            // mixed
+);
+
+dumper(1);              // без тега
+
+dumper(
+    tag('tag'),
+    
+    2
+);                      // с тегами tag и user 
+
+dumper(
+    expr(true && false),
+    3
+);                      // не выполнится
+
+                      //  и user 
+
+dumper(
+    tag('user'),
+    expr(function () {
+        return in_array(2, [1, 2, 3]);
+    }),
+    tag('tag'),
+    3
+);                      // выполнится с тегами tag и user 
 ```
+
+## Разработка
+ 1) Разработка ведётся по git flow
+    - После клонирования нужно выполнить `git flow init -df`
+ 1) Установка `php` зависимостей `composer install --no-interaction  --optimize-autoloader` 
+ 1) Установка `js` зависимостей `yarn`
+    - Для сборки front-end'а использовать команду `yarn run dev`

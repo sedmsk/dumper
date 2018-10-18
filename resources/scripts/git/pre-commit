@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+git status | grep -Eq  ":\s{1,}(resources\/(js|style)\/|dist)" && \
+	echo "Building assets.." && \
+	yarn run pre-commit >> /dev/null;
+
+git add dist;

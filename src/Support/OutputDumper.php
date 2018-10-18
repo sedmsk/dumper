@@ -5,12 +5,7 @@ namespace SD\Dumper\Support;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 
-/**
- * Class Dumper
- *
- * @package SD\Dumper\Support
- */
-class Dumper
+class OutputDumper
 {
     /**
      * Dump a value with elegance.
