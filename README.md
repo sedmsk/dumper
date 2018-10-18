@@ -34,8 +34,8 @@ dumper(
 ```
 
 ## Разработка
- 1) Разработка ведётся по git flow
+1. Разработка ведётся по git flow
     - После клонирования нужно выполнить `git flow init -df`
- 1) Установка `php` зависимостей `composer install --no-interaction  --optimize-autoloader` 
- 1) Установка `js` зависимостей `yarn`
+1. Установка `php` зависимостей `composer install --no-interaction  --optimize-autoloader` 
+1. Установка `js` зависимостей `yarn`
     - Для сборки front-end'а использовать команду `yarn run dev`
