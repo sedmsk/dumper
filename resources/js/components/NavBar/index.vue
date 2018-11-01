@@ -50,3 +50,9 @@
         }
     }
 </script>
+
+<style lang="stylus" scoped>
+    .sticky-top {
+        z-index: 202020;
+    }
+</style>
