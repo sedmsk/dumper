@@ -1,13 +1,14 @@
 <template>
     <div class="card mt-3">
-        <div class="card-header">
+        <div class="card-header" @dblclick="toggleCollapse">
             {{ log.timestamp | date }}
             <div class="pull-right">
                 {{ log.tags | list }}
+                <i class="fa fa-fw fa-lg" @click="toggleCollapse" :class="[ toggleCollapseIcon ]"></i>
             </div>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" v-append="output"></li>
+            <li class="list-group-item" v-show="!collapse" v-append="output"></li>
         </ul>
     </div>
 </template>
@@ -23,6 +24,16 @@
         props: {
             log: {
                 required: true,
+            }
+        },
+        data() {
+            return {
+                collapse: false,
+            };
+        },
+        methods: {
+            toggleCollapse() {
+                this.collapse = !this.collapse;
             }
         },
         filters: {
@@ -50,6 +61,9 @@
                 console.log(this.log);
                 return atob(this.log.output);
             },
+            toggleCollapseIcon() {
+                return this.collapse ? 'fa-window-maximize' : 'fa-window-minimize';
+            }
         },
         components: {
             Header,
