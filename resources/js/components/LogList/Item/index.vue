@@ -75,8 +75,15 @@
 </script>
 
 <style lang="stylus">
-    div.card ul.list-group li.list-group-item pre.sf-dump * {
-        font-family: "Fira Code", Monaco, Consolas, monospace !important;
-        font-size: 13px !important;
+    div.card ul.list-group li.list-group-item pre.sf-dump {
+        * {
+            font-family: "Fira Code", Monaco, Consolas, monospace !important;
+            font-size: 13px !important;
+        }
+
+        .fa {
+            font-family: FontAwesome !important;
+            pointer-events: none;
+        }
     }
 </style>

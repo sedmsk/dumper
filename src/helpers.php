@@ -42,7 +42,14 @@ if (!function_exists('dumpScripts')) {
      */
     function dumpScripts(): string
     {
-        return (new \SD\Dumper\Support\HtmlDumper())->renderDumpHandler();
+        $scripts = (new \SD\Dumper\Support\HtmlDumper())->renderDumpHandler();
+
+        $fa = [
+            '<i class="fa fa-fw fa-arrow-circle-right" aria-hidden="true"></i>',
+            '<i class="fa fa-fw fa-arrow-circle-down" aria-hidden="true"></i>',
+        ];
+
+        return str_replace(['▶', '▼',], $fa, $scripts);
     }
 }
 
