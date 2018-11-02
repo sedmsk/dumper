@@ -7,7 +7,7 @@
                 <i class="fa fa-fw fa-lg" @click="toggleCollapse" :class="[ toggleCollapseIcon ]"></i>
             </div>
         </div>
-        <backtrace :list="log.backtrace"></backtrace>
+        <backtrace :list="log.backtrace" v-show="!collapse"></backtrace>
         <ul class="list-group list-group-flush">
             <li class="list-group-item" v-show="!collapse" v-append="output"></li>
         </ul>
