@@ -7,6 +7,7 @@
                 <i class="fa fa-fw fa-lg" @click="toggleCollapse" :class="[ toggleCollapseIcon ]"></i>
             </div>
         </div>
+        <backtrace :list="log.backtrace"></backtrace>
         <ul class="list-group list-group-flush">
             <li class="list-group-item" v-show="!collapse" v-append="output"></li>
         </ul>
@@ -14,6 +15,7 @@
 </template>
 <script>
     import Append from "vue-append";
+    import Backtrace from "./Backtrace";
     import Header from "./Header";
     import Vue from "vue";
 
@@ -66,7 +68,15 @@
             }
         },
         components: {
+            Backtrace,
             Header,
         },
     }
 </script>
+
+<style lang="stylus">
+    div.card ul.list-group li.list-group-item pre.sf-dump * {
+        font-family: "Fira Code", Monaco, Consolas, monospace !important;
+        font-size: 13px !important;
+    }
+</style>

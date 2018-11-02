@@ -16,7 +16,6 @@ use SD\Dumper\Support\OutputDumper;
  */
 class Dumper extends AbstractDumper
 {
-
     /**
      * @param mixed ...$args
      *
@@ -45,28 +44,30 @@ class Dumper extends AbstractDumper
             foreach ($args as $arg) {
                 (new OutputDumper())->dump($arg);
             }
+            $backtrace = $this->getBacktrace();
             $output = base64_encode(ob_get_clean());
             $tags = $this->getTags();
             $qid = static::$qid;
-            $did = 'd'.mt_rand((int)1e10, (int)1e11 - 1);
+            $did = 'd'.random_int((int)1e10, (int)1e11 - 1);
             $timestamp = floor(microtime(true) * 1e3);
 
-            $json = json_encode(compact('output', 'tags', 'qid', 'timestamp', 'did'), JSON_PRETTY_PRINT);
+            $json = json_encode(compact('backtrace', 'output', 'tags', 'qid', 'timestamp', 'did'), JSON_PRETTY_PRINT);
 
             DataBase::insert($json);
         }
     }
 
-//    protected function getBacktrace(): array
-//    {
-//        $local_root = false;
-//        $host = $local_root ? 'idea://open?file='.$local_root.DIRECTORY_SEPARATOR : 'http://localhost:63342/api/file?file=';
-//
-//        $backtrace = debug_backtrace();
-//        do {
-//            $tmp = array_shift($backtrace);
-//        } while (substr(static::class, -\strlen($tmp['class'])) !== $tmp['class'] || $tmp['function'] !== 'dump');
-//
-//        return [];
-//    }
+    protected function getBacktrace(): array
+    {
+        $backtrace = debug_backtrace();
+        do {
+            $tmp = array_shift($backtrace);
+        } while (static::class !== $tmp['class'] || $tmp['function'] !== 'dump');
+
+        foreach ($backtrace as &$item) {
+            unset($item['args'], $item['object']);
+        }
+
+        return $backtrace;
+    }
 }
