@@ -24,21 +24,19 @@ dumper(1);              // без тега
 
 dumper(
     tag('tag'),
-    
+    tag('user'),
     2
 );                      // с тегами tag и user 
 
 dumper(
     expr(true && false),
     3
-);                      // не выполнится
-
-                      //  и user 
+);                      // не выполнится 
 
 dumper(
     tag('user'),
-    expr(function () {
-        return in_array(2, [1, 2, 3]);
+    expr(function () use ($user) {
+        return in_array($user->id, [1, 2, 3]);
     }),
     tag('tag'),
     3
