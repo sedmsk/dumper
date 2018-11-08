@@ -1,34 +1,18 @@
 <template>
-    <table class="table">
-        <thead v-if="listFirst">
-        <tr v-for="item in listFirst">
-            <th scope="col">
-                <i v-if="listOther.length" class="fa fa-fw" :class="[ showBacktraceIcon ]"
-                   @click="toggleBacktraceIcon"></i>
-            </th>
-            <th scope="col" class="path">
-                <a v-if="pattern" :href="link(item)">{{ item.file + ":" + item.line }}</a>
-                <span v-else>{{ item.file + ":" + item.line }}</span>
-            </th>
-            <th scope="col">
+    <div class="card-header container">
+        <div class="row" v-for="(item, $index) in list" v-if="!$index || showBacktrace">
+            <div class="col-sm-7 text-truncate" :title="item.file + ':' + item.line">
+                <a v-if="pattern" :href="link(item)">{{ item.file + ':' + item.line }}</a>
+                <span v-else>{{ item.file + ':' + item.line }}</span>
+            </div>
+            <div class="col-sm-4 text-truncate" :title="method(item)">
                 {{ method(item) }}
-            </th>
-        </tr>
-        </thead>
-        <tbody v-if="listOther && showBacktrace">
-        <tr v-for="item in listOther">
-            <th scope="col">
-            </th>
-            <td scope="col">
-                <a v-if="pattern" :href="link(item)">{{ item.file + ":" + item.line }}</a>
-                <span v-else>{{ item.file + ":" + item.line }}</span>
-            </td>
-            <td scope="col">
-                {{ method(item) }}
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
+            <div class="col-sm-1 text-right">
+                <i class="fa fa-fw" :class="[ { [ showBacktraceIcon ] : !$index } ]" @click="toggleBacktraceIcon"></i>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -59,12 +43,6 @@
             },
         },
         computed: {
-            listFirst() {
-                return [this.list[0]] || [];
-            },
-            listOther() {
-                return this.list.slice(1) || [];
-            },
             showBacktraceIcon() {
                 return this.showBacktrace ? "fa-minus" : "fa-plus";
             },
@@ -73,17 +51,20 @@
 </script>
 
 <style lang="stylus" scoped>
-    table.table {
-        font: 12px "Fira Code", Monaco, Consolas, monospace;
-        margin-bottom: -1px;
+    $size = 12px;
 
-        td, th {
-            &:first-child {
-                width: 10px;
+    .card-header.container {
+        font: $size "Fira Code", Monaco, Consolas, monospace;
+        padding: $size 15px;
+
+        .row {
+            &:not(:first-child) {
+                padding-top: $size;
             }
-        }
-        .path {
-            width: 100px;
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(0,0,0,.125);
+                padding-bottom: $size;
+            }
         }
     }
 </style>
