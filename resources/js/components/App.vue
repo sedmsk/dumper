@@ -2,24 +2,14 @@
     <div class="root">
         <nav-bar :is-sticky="sticky">
             <a class="navbar-brand mb-0 h1" href="#">Dumper</a>
-            <template slot="left">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-            </template>
             <template slot="right">
-                <li class="nav-item cursor">
+                <li class="nav-item">
                     <a class="nav-link" @click="clearLogs">
                         <i class="fa fa-fw fa-lg fa-trash-o" aria-hidden="true"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <toggle class="nav-link" v-model="sticky"></toggle>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link cursor">
-                        <i class="fa fa-fw fa-lg fa-cog" aria-hidden="true"></i>
-                    </a>
                 </li>
             </template>
         </nav-bar>
@@ -36,7 +26,6 @@
 <script>
     import axios from "axios";
     import PreLoader from "./PreLoader";
-    import MyButton from "./MyButton";
     import NavBar from "./NavBar";
     import Toggle from "./NavBar/Toggle";
     import LogList from "./LogList";
@@ -59,13 +48,12 @@
                     .then(response => {
                         if (response.data.response && response.data.response.ts) {
                             this.ts = response.data.response.ts;
-                            for (let index in response.data.response.data) {
-                                let log = response.data.response.data[index];
-                                this.logs.unshift(JSON.parse(log.data));
-                            }
+                            response.data.response.data.forEach(element => {
+                                this.logs.unshift(JSON.parse(element.data));
+                            }, this);
                         }
                     })
-                    .catch(error => console.log(error))
+                    .catch(console.error)
                     .then(this.loadData)
                 ;
             },
@@ -86,7 +74,6 @@
         },
         components: {
             PreLoader,
-            MyButton,
             NavBar,
             Toggle,
             LogList,
@@ -97,5 +84,21 @@
 <style lang="stylus" scoped>
     .root {
         margin-bottom: 30px;
+    }
+
+    .nav-link {
+        .fa {
+            &:focus,
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.fa-trash-o {
+                &:focus,
+                &:hover {
+                    color: #dc3545 !important;
+                }
+            }
+        }
     }
 </style>

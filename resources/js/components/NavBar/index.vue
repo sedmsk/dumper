@@ -10,9 +10,6 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <slot name="left"></slot>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <selector :list="tags"></selector>
-                </form>
                 <ul class="navbar-nav">
                     <slot name="right"></slot>
                 </ul>
@@ -22,8 +19,6 @@
 </template>
 
 <script>
-    import Selector from "../Selector";
-
     export default {
         name: "NavBar",
         props: {
@@ -45,9 +40,6 @@
                 this.showCollapse = !this.showCollapse;
             }
         },
-        components: {
-            Selector,
-        }
     }
 </script>
 

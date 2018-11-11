@@ -5,11 +5,12 @@
                 <a v-if="pattern" :href="link(item)">{{ item.file + ':' + item.line }}</a>
                 <span v-else>{{ item.file + ':' + item.line }}</span>
             </div>
-            <div class="col-sm-4 text-truncate" :title="method(item)">
+            <div class="col-sm-4 text-truncate method" :title="method(item)">
                 {{ method(item) }}
             </div>
             <div class="col-sm-1 text-right">
-                <i class="fa fa-fw" :class="[ { [ showBacktraceIcon ] : !$index } ]" @click="toggleBacktraceIcon"></i>
+                <i class="fa fa-fw cursor" :class="[ { [ showBacktraceIcon ] : !$index } ]"
+                   @click="toggleBacktraceIcon"></i>
             </div>
         </div>
     </div>
@@ -62,8 +63,15 @@
                 padding-top: $size;
             }
             &:not(:last-child) {
-                border-bottom: 1px solid rgba(0,0,0,.125);
+                border-bottom: 1px solid rgba(0, 0, 0, .125);
                 padding-bottom: $size;
+            }
+
+            .method {
+                cursor: help;
+            }
+            .cursor {
+                cursor: pointer;
             }
         }
     }

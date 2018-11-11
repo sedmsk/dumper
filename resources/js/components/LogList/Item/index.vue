@@ -16,7 +16,6 @@
 <script>
     import Append from "vue-append";
     import Backtrace from "./Backtrace";
-    import Header from "./Header";
     import Vue from "vue";
 
     Vue.use(Append);
@@ -60,7 +59,6 @@
         },
         computed: {
             output() {
-                console.log(this.log);
                 return atob(this.log.output);
             },
             toggleCollapseIcon() {
@@ -69,7 +67,6 @@
         },
         components: {
             Backtrace,
-            Header,
         },
     }
 </script>
