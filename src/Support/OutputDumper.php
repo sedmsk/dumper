@@ -5,12 +5,7 @@ namespace SD\Dumper\Support;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 
-/**
- * Class Dumper
- *
- * @package SD\Dumper\Support
- */
-class Dumper
+class OutputDumper
 {
     /**
      * Dump a value with elegance.
@@ -21,7 +16,11 @@ class Dumper
     public function dump($value)
     {
         if (class_exists(CliDumper::class)) {
-            $dumper = in_array(PHP_SAPI, ['cli', 'phpdbg']) ? new CliDumper : new HtmlDumper;
+            $mustCli = \in_array(PHP_SAPI, [
+                    'cli',
+                    'phpdbg',
+                ]) && !\defined('PHPUNIT_COMPOSER_INSTALL') && !\defined('__PHPUNIT_PHAR__');
+            $dumper = $mustCli ? new CliDumper : new HtmlDumper;
 
             $dumper->dump((new VarCloner)->cloneVar($value));
         } else {

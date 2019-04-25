@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo $PWD;
+
+git status | grep -Eq  ":\s{1,}(resources\/(js|style)\/|dist)" && \
+    echo "HTML minimize.." && \
+    php ./resources/scripts/git/pre-commit-html-mutator.php -v0 && \
+	echo "Building assets.." && \
+	yarn run pre-commit >> /dev/null && \
+	echo "HTML minimize revert.." && \
+    php ./resources/scripts/git/pre-commit-html-mutator.php -v1;
+
+git add dist;

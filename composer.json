@@ -1,6 +1,5 @@
 {
     "name": "sd/dumper",
-    "version": "0.2.0",
     "homepage": "http://git.shire.local/SD/MOCKBA/dumper",
     "license": "MIT",
     "authors": [
@@ -12,35 +11,45 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
-        "symfony/dotenv": "~3.3",
-        "symfony/var-dumper": "~3.3",
-        "twig/twig": "~2.4"
+        "php": ">=7.1",
+        "ext-json": "*",
+        "symfony/var-dumper": "^3.3 || ^4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpdocumentor/phpdocumentor": "dev-master",
+        "phpunit/phpunit": "^7",
+        "phpunit/php-code-coverage": "^6.0"
     },
     "autoload": {
         "psr-4": {
-            "SD\\Dumper\\": "src"
+            "SD\\Dumper\\": "src/"
         },
         "files": [
-            "src/init.php",
             "src/helpers.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "SD\\Dumper\\Tests\\": "tests"
+            "Tests\\": "tests/"
         }
     },
     "config": {
+        "optimize-autoloader": true,
         "sort-packages": true
     },
     "scripts": {
         "test": [
-            "@composer install",
-            "phpunit --colors --testdox"
+            "@composer install --no-interaction",
+            "phpunit --colors --testdox",
+            "phpdoc"
+        ],
+        "post-autoload-dump": [
+            "resources/scripts/composer/post-autoload-dump"
         ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2.x-dev"
+        }
     }
 }
