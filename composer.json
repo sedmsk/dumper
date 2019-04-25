@@ -1,6 +1,6 @@
 {
     "name": "sd/dumper",
-    "homepage": "http://git.shire.local/SD/MOCKBA/dumper",
+    "homepage": "http://gitlab-ci.shire.local/dev-tools/Dumper",
     "license": "MIT",
     "authors": [
         {
