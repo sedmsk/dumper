@@ -33,11 +33,12 @@
         }
     },
     "config": {
+        "optimize-autoloader": true,
         "sort-packages": true
     },
     "scripts": {
         "test": [
-            "@composer install --no-interaction  --optimize-autoloader",
+            "@composer install --no-interaction",
             "phpunit --colors --testdox",
             "phpdoc"
         ],
