@@ -5,12 +5,14 @@
     "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production -- --progress",
-    "pre-commit": "npm run production -- --display=errors-only"
+    "pre-commit": "npm run production -- --display=errors-only",
+    "doctoc": "node_modules/.bin/doctoc README.md"
   },
   "devDependencies": {
     "axios": "^0.18.0",
     "browser-sync": "^2.26.0",
     "browser-sync-webpack-plugin": "2.0.1",
+    "doctoc": "^1.4.0",
     "laravel-mix": "^2.1.14",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
