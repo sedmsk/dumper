@@ -1,12 +1,12 @@
 {
     "name": "sd/dumper",
-    "homepage": "http://gitlab-ci.shire.local/dev-tools/Dumper",
+    "homepage": "https://github.com/sedmsk/dumper",
     "license": "MIT",
     "authors": [
         {
             "name": "Igor Finagin",
-            "email": "Igor.Finagin@tatar.ru",
-            "homepage": "https://phab.shire.local/p/Igor.Finagin/",
+            "email": "Igor@Finag.in",
+            "homepage": "https://github.com/finagin",
             "role": "Developer"
         }
     ],
