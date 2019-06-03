@@ -1,6 +1,8 @@
-<?php declare(strict_types=1);
+<?php
 
-if (!function_exists('dumper')) {
+declare(strict_types=1);
+
+if (! function_exists('dumper')) {
     /**
      * @param  \SD\Dumper\Contracts\Parameter|mixed ...$args
      *
@@ -12,7 +14,7 @@ if (!function_exists('dumper')) {
     }
 }
 
-if (!function_exists('tag')) {
+if (! function_exists('tag')) {
     /**
      * @param string $name
      *
@@ -24,7 +26,7 @@ if (!function_exists('tag')) {
     }
 }
 
-if (!function_exists('expr')) {
+if (! function_exists('expr')) {
     /**
      * @param $expression
      *
@@ -36,7 +38,7 @@ if (!function_exists('expr')) {
     }
 }
 
-if (!function_exists('dumpScripts')) {
+if (! function_exists('dumpScripts')) {
     /**
      * @return string
      */
@@ -49,11 +51,11 @@ if (!function_exists('dumpScripts')) {
             '<i class="fa fa-fw fa-arrow-circle-down" aria-hidden="true"></i>',
         ];
 
-        return str_replace(['▶', '▼',], $fa, $scripts);
+        return str_replace(['▶', '▼'], $fa, $scripts);
     }
 }
 
-if (!function_exists('mix')) {
+if (! function_exists('mix')) {
     /**
      * @param string $path
      * @param bool $wrap

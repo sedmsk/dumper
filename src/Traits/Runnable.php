@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper\Traits;
 
@@ -16,7 +18,6 @@ trait Runnable
         $ajaxKey = 'HTTP_X_REQUESTED_WITH';
 
         if (isset($_SERVER[$ajaxKey]) && strtolower($_SERVER[$ajaxKey]) === 'xmlhttprequest') {
-
             if (isset($_GET['clear']) && $_GET['clear'] == 1) {
                 DataBase::delete();
 
