@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper\Support;
 
@@ -38,7 +40,7 @@ SQLite;
             ]
         );
 
-        $this->pdo = new PDO('sqlite:' . $file, null, null, [PDO::ATTR_PERSISTENT => true]);
+        $this->pdo = new PDO('sqlite:'.$file, null, null, [PDO::ATTR_PERSISTENT => true]);
 
         $this->pdo->exec($this->sql_create_table);
     }

@@ -5,9 +5,7 @@ namespace SD\Dumper\Support;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper as SymfonyHtmlDumper;
 
 /**
- * Class HtmlDumper
- *
- * @package SD\Dumper\Support
+ * Class HtmlDumper.
  */
 class HtmlDumper extends SymfonyHtmlDumper
 {

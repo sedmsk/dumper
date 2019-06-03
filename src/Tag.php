@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper;
 
@@ -6,9 +8,7 @@ use SD\Dumper\Contracts\Dumper;
 use SD\Dumper\Contracts\Parameter;
 
 /**
- * Class Tag
- *
- * @package SD\Dumper
+ * Class Tag.
  */
 class Tag implements Parameter
 {
@@ -28,7 +28,7 @@ class Tag implements Parameter
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function apply(Dumper $dumper)
     {

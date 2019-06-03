@@ -1,11 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper\Contracts;
 
 /**
- * Interface Dumper
- *
- * @package SD\Dumper\Contracts
+ * Interface Dumper.
  */
 interface Dumper extends Runnable, Taggable, Writable
 {
