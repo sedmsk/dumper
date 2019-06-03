@@ -1,16 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper\Contracts;
 
 /**
- * Interface Writable
- *
- * @package SD\Dumper\Contracts
+ * Interface Writable.
  */
 interface Writable
 {
     /**
-     * Будет ли этот дамп записан
+     * Будет ли этот дамп записан.
      *
      * @param bool $writable
      */

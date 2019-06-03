@@ -19,7 +19,7 @@ class OutputDumper
             $mustCli = \in_array(PHP_SAPI, [
                     'cli',
                     'phpdbg',
-                ]) && !\defined('PHPUNIT_COMPOSER_INSTALL') && !\defined('__PHPUNIT_PHAR__');
+                ]) && ! \defined('PHPUNIT_COMPOSER_INSTALL') && ! \defined('__PHPUNIT_PHAR__');
             $dumper = $mustCli ? new CliDumper : new HtmlDumper;
 
             $dumper->dump((new VarCloner)->cloneVar($value));

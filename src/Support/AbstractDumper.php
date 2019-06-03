@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper\Support;
 
-use SD\Dumper\Contracts\Dumper;
 use SD\Dumper\Traits\Runnable;
 use SD\Dumper\Traits\Taggable;
 use SD\Dumper\Traits\Writable;
+use SD\Dumper\Contracts\Dumper;
 
 abstract class AbstractDumper implements Dumper
 {

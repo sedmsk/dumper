@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 function rglob($pattern, $flags = 0)
 {
@@ -31,12 +33,11 @@ $options = getopt('v:', [
 if (isset($options['v']) || isset($options['vector'])) {
     $vector = $options['v'] ?? $options['vector'];
     $options = [
-        ['/(>|\}\})(\n\s+)\s{3}(\{\{|<)/', '$1<!--$2-->$3',],
-        ['/(>|\}\})<!--(\n\s+)-->(\{\{|<)/', '$1$2   $3',],
+        ['/(>|\}\})(\n\s+)\s{3}(\{\{|<)/', '$1<!--$2-->$3'],
+        ['/(>|\}\})<!--(\n\s+)-->(\{\{|<)/', '$1$2   $3'],
     ];
 
     if (isset($options[$vector])) {
-
         mutate($options[$vector]);
         exit;
     }

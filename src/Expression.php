@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper;
 
@@ -7,9 +9,7 @@ use SD\Dumper\Contracts\Dumper;
 use SD\Dumper\Contracts\Parameter;
 
 /**
- * Class Expression
- *
- * @package SD\Dumper
+ * Class Expression.
  */
 class Expression implements Parameter
 {

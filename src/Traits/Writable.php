@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper\Traits;
 
@@ -17,7 +19,7 @@ trait Writable
     }
 
     /**
-     * Добавление записы дампа
+     * Добавление записы дампа.
      *
      * @param mixed ...$args
      */

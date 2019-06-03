@@ -1,17 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SD\Dumper;
 
-use SD\Dumper\Contracts\Dumper as IDumper;
-use SD\Dumper\Contracts\Parameter;
-use SD\Dumper\Support\AbstractDumper;
 use SD\Dumper\Support\DataBase;
+use SD\Dumper\Contracts\Parameter;
 use SD\Dumper\Support\OutputDumper;
+use SD\Dumper\Support\AbstractDumper;
+use SD\Dumper\Contracts\Dumper as IDumper;
 
 /**
- * Class Dumper
+ * Class Dumper.
  *
- * @package SD\Dumper
  * @since 0.4.0
  */
 class Dumper extends AbstractDumper
@@ -35,7 +36,7 @@ class Dumper extends AbstractDumper
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function write(...$args): void
     {
@@ -48,7 +49,7 @@ class Dumper extends AbstractDumper
             $output = base64_encode(ob_get_clean());
             $tags = $this->getTags();
             $qid = static::$qid;
-            $did = 'd'.random_int((int)1e10, (int)1e11 - 1);
+            $did = 'd'.random_int((int) 1e10, (int) 1e11 - 1);
             $timestamp = floor(microtime(true) * 1e3);
 
             $json = json_encode(compact('backtrace', 'output', 'tags', 'qid', 'timestamp', 'did'), JSON_PRETTY_PRINT);
