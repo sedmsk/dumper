@@ -17,8 +17,6 @@ composer config repositories.sedmsk.github.io composer https://sedmsk.github.io/
 composer require --dev sd/dumper:"dev-develop"
 ```
 
-Интерфейс будет доступен по адресу `{project}.{release}.sedmsk72/dumper`
-
 ## Использование
 ```php
 
