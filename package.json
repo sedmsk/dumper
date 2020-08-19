@@ -9,7 +9,7 @@
     "doctoc": "node_modules/.bin/doctoc README.md"
   },
   "devDependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "browser-sync": "^2.26.0",
     "browser-sync-webpack-plugin": "2.0.1",
     "doctoc": "^1.4.0",
