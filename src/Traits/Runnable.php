@@ -36,6 +36,7 @@ trait Runnable
                         ],
                     ]);
                 }
+                usleep(200000); // .2 sec
             } while (time() < $max_time);
 
             return json_encode([]);
