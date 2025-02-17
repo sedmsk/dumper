@@ -9,14 +9,12 @@ use Symfony\Component\VarDumper\Dumper\HtmlDumper as SymfonyHtmlDumper;
  */
 class HtmlDumper extends SymfonyHtmlDumper
 {
-    protected $dumpHeader = '';
-
     /**
      * Colour definitions for output.
      *
      * @var array
      */
-    protected $styles = [
+    protected array $styles = [
         'default' => 'background-color:#fff; color:#222; line-height:1.2em; font-weight:normal; font:12px Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:100000',
         'num' => 'color:#a71d5d',
         'const' => 'color:#795da3',
